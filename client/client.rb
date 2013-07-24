@@ -2,9 +2,10 @@
 
 require 'restclient'
 
-client = RestClient::Resource.new('https://localhost/service.json',
-                                  :ssl_client_cert  =>  OpenSSL::X509::Certificate.new(File.read('install/client.pem')),
-                                  :ssl_client_key   =>  OpenSSL::PKey::RSA.new(File.read('install/client.key'), 'keefnmick27'),
+client = RestClient::Resource.new('https://localhost/',
+                                  :ssl_client_cert  =>  OpenSSL::X509::Certificate.new(File.read('client.pem')),
+                                  :ssl_client_key   =>  OpenSSL::PKey::RSA.new(File.read('client.key')),
                                   :verify_ssl       =>  OpenSSL::SSL::VERIFY_NONE)
-client.get
+puts client.get
+
 
